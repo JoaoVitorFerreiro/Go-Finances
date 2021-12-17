@@ -5,15 +5,11 @@
 O projeto **Go Finances** foi construindo com React Native com o objetivo de controlar a vida financeira das pessoas.
 
 
---- 
-
-
 ## 🚀 Tecnologias Utilizadas:
 O projeto foi criado utilizando as seguintes tecnologias:
 - [React Native](https://reactnative.dev/)
 - [Expo](https://expo.dev/)
 
----
 
 ## 📚 Libs Utilizadas:
 - Date-fns
@@ -26,15 +22,12 @@ O projeto foi criado utilizando as seguintes tecnologias:
 
 <br />
 
----
-
 ## 🚀 Cadastro de Transação do APP:
 
 
 ![2021-12-17_13h12_30](https://user-images.githubusercontent.com/58046326/146575143-293680f2-68de-43be-93c6-29a368ad614e.gif)
 
 
----
 
 ## 🚀 Dashboard e Relatório criado a partir dos Cadastros de Transações:
 
