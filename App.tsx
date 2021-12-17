@@ -37,8 +37,14 @@ export default function App() {
    
    <ThemeProvider theme={theme}>
          <NavigationContainer>
+          <StatusBar   
+            barStyle="light-content"
+            backgroundColor="transparent"
+            translucent
+          />
            <AppRoutes/>
          </NavigationContainer>
      </ThemeProvider> 
+     
   )
 }

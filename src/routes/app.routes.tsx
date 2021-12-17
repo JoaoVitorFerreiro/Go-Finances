@@ -10,67 +10,73 @@ import { Dashboard  } from '../screens/Dashboard';
 import { Register } from '../screens/Register';
 import { Resume } from '../screens/Resume';
 
+import { BorderlessButton } from 'react-native-gesture-handler';
+
 const { Navigator, Screen } = createBottomTabNavigator();
+
 
 export function AppRoutes (){
     const theme = useTheme();
 
     return (
+        
         <Navigator
             screenOptions={{
                 headerShown: false,
                 tabBarActiveTintColor: theme.colors.secondary,
                 tabBarInactiveTintColor: theme.colors.text,
-                tabBarLabelPosition: 'beside-icon',
+                tabBarLabelPosition: 'below-icon',
+                tabBarLabelStyle:{
+                    fontSize: 13,
+                    marginTop: 4,
+                },
                 tabBarStyle:{
                     height: 70,
                     paddingVertical: Platform.OS === 'ios' ? 20 : 0,
+                    paddingBottom: 10,
+                    paddingTop: 10,      
                 },
             }}
-        
         >
             <Screen
                 name="Listagem"
                 component={Dashboard}
                 options={{
                     tabBarIcon:(({size, color}) => 
-                    
                     <MaterialIcons
                         name="format-list-bulleted"
-                        size={size}
+                        size={31}
                         color={color}
                     />
-                    )
+                    ),
                 }}
             />
-
             <Screen
                 name="Cadastrar"
                 component={Register}
                 options={{
                     tabBarIcon:(({size, color}) => 
-                    
                     <MaterialIcons
                         name="attach-money"
-                        size={size}
+                        size={31}
                         color={color}
-                    />
-                    )
+                    />      
+                    ),
+                    
                 }}
             />  
-
+  
             <Screen
                 name="Resumo"
                 component={Resume}
                 options={{
                     tabBarIcon:(({size, color}) => 
-                    
                     <MaterialIcons
                         name="pie-chart"
-                        size={size}
+                        size={31}
                         color={color}
                     />
-                    )
+                    ),
                 }}
             /> 
         </Navigator>

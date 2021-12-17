@@ -1,7 +1,8 @@
 
 import styled, {css} from 'styled-components/native'
-import { Feather } from '@expo/vector-icons'
+import { Feather, AntDesign  } from '@expo/vector-icons'
 import { RFValue } from 'react-native-responsive-fontsize';
+import { RectButton } from 'react-native-gesture-handler';
 
 interface TransctionTypeProps{
     type: 'positive' | 'negative';
@@ -57,5 +58,25 @@ export const  Date = styled.Text`
     font-size: ${RFValue(14)}px;
     color: ${({theme}) => theme.colors.text};
 `
+
+export const Header = styled.View`
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+`;
+
+export const IconButton = styled(RectButton)`
+    width: 20px;
+    height: 20px;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const IconClose = styled(Feather)`
+    font-size: ${RFValue(16)}px;
+    color: ${({ theme }) => theme.colors.text};
+    border-radius: 10px;
+`;
 
 

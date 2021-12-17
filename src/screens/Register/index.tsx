@@ -45,6 +45,7 @@ const Schema = Yup.object().shape({
     .number()
     .typeError('Informe um valor númerico')
     .positive('O valor não pode ser negativo')
+    .required('Valor Obrigatório'),
 })
 
 type NavigationProps = {

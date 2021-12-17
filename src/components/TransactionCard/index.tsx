@@ -10,10 +10,14 @@ import {
     Icon,
     CategoryName,
     Date,
+    Header,
+    IconButton,
+    IconClose
 } from "./styles";
 
 
 export interface TransactionCardProps {
+    id: string;
     type: 'positive' | 'negative';
     name: string;
     amount: string;
@@ -23,11 +27,12 @@ export interface TransactionCardProps {
 
 interface Props {
     data: TransactionCardProps;
+    onPress: () => void;
 }
 
 
 
-export function TransactionCard({data} : Props){
+export function TransactionCard({data, onPress, ...rest} : Props){
     const [ category ] = categories.filter(
         item => item.key === data.category
     );
@@ -35,12 +40,18 @@ export function TransactionCard({data} : Props){
 
     return (
         <Container>
+            <Header>
             <Title>{data.name}</Title>
+                
+            <IconButton 
+             onPress={onPress}>
+            <IconClose name={"trash-2"}/>
+            </IconButton>
+            </Header>
             <Amount type={data.type}>
-                {data.type === 'negative' && '- '}
-                {data.amount}
-                </Amount>
-            
+                    {data.type === 'negative' && '- '}
+                    {data.amount}
+            </Amount>
             <Footer>
                 <Category>
                     <Icon name={category.icon}/>

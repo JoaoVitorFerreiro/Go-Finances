@@ -1,5 +1,5 @@
 import React, { useState, useEffect,useCallback } from "react";
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, Alert } from 'react-native';
 import { HighlightCard } from "../../components/HighlightCard";
 import { TransactionCard,TransactionCardProps } from "../../components/TransactionCard";
 
@@ -62,9 +62,31 @@ export function Dashboard(){
         return `${lastTransaction.getDate()} de ${lastTransaction.toLocaleString(`pt-BR`, {month: 'long'})}`;
     }
 
+    async function handleRemoveSkill(transactionId:string){
+        const response = await AsyncStorage.getItem(dataKey);
+        const transactions = response ? JSON.parse(response) : [];
 
+        const filteredTransactions = transactions
+        .filter((transaction: DataListProps) => transaction.id != transactionId)
+        
+        setTransactions(filteredTransactions);
+        await AsyncStorage.setItem(dataKey, JSON.stringify(filteredTransactions));
 
-   async function loadTransaction(){
+        loadTransaction();
+    }
+
+    function alerta(name: string, id: string,) {
+        Alert.alert(`Você deseja deletar ${String(name)}`,
+        "",
+        [
+          {text: 'Cancelar', },
+          {text: 'Deletar', onPress: () => handleRemoveSkill(id) },
+        ],
+          {cancelable: false}
+        )}
+    
+    
+    async function loadTransaction(){
        const response = await AsyncStorage.getItem(dataKey);
        const transactions = response ? JSON.parse(response) : [];
 
@@ -211,12 +233,13 @@ export function Dashboard(){
         
         <Transactions>
             <Title>Listagem</Title>
-            
-        
             <TransactionList
                 data={transactions}
                 keyExtractor={item => item.id}
-                renderItem={({item}) => <TransactionCard data={item}/>}
+                renderItem={({item}) => <TransactionCard 
+                    data={item}
+                    onPress={() => alerta(item.name, item.id)}
+                />}
             /> 
         </Transactions>
         </>
