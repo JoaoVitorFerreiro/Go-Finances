@@ -19,7 +19,6 @@ interface Category {
     name: string;
 }
 
-
 interface Props{
     category: Category;
     setCategory: (category: Category) => void;

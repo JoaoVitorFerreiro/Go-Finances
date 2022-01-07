@@ -1,10 +1,8 @@
 import styled from 'styled-components/native'
-import { RFPercentage, RFValue } from 'react-native-responsive-fontsize'
-import { getStatusBarHeight } from 'react-native-iphone-x-helper'
+import { RFValue } from 'react-native-responsive-fontsize'
 
 import{Feather} from '@expo/vector-icons'
 import { GestureHandlerRootView } from 'react-native-gesture-handler' 
-import theme from '../../global/styles/theme'
 
 
 interface CategoryProps {

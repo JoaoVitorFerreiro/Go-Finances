@@ -11,7 +11,6 @@ interface Props {
     onPress: () => void;
 }
 
-
 export function CategorySelectButton({title, onPress} : Props){
  return(
      <Container>

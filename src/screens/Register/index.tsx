@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 import { useForm } from "react-hook-form";
 import { 
@@ -12,6 +12,7 @@ import uuid from 'react-native-uuid';
 
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useAuth } from "../../hooks/auth";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from '@react-navigation/native' 
@@ -31,6 +32,7 @@ import {
     Fields,
     TransactionsTypes,
  } from './styles'
+
 
 interface FormData {
     name: string;
@@ -54,7 +56,8 @@ type NavigationProps = {
   
 
 export function Register(){
-    const dataKey = '@gofinances:transactions';
+    const { user } = useAuth();
+    const dataKey = `@gofinances:transactions_user${user.id}`;
 
     const [transactionType, setTransactionType] = useState('');
     const [categoryModalOpen, setCategoryModalOpen] = useState(false);

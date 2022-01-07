@@ -30,8 +30,6 @@ interface Props {
     onPress: () => void;
 }
 
-
-
 export function TransactionCard({data, onPress, ...rest} : Props){
     const [ category ] = categories.filter(
         item => item.key === data.category
@@ -45,7 +43,10 @@ export function TransactionCard({data, onPress, ...rest} : Props){
                 
             <IconButton 
              onPress={onPress}>
-            <IconClose name={"trash-2"}/>
+            <IconClose 
+                name={"trash-2"}
+            />
+            
             </IconButton>
             </Header>
             <Amount type={data.type}>

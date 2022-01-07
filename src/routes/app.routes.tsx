@@ -10,12 +10,10 @@ import { Dashboard  } from '../screens/Dashboard';
 import { Register } from '../screens/Register';
 import { Resume } from '../screens/Resume';
 
-import { BorderlessButton } from 'react-native-gesture-handler';
-
-const { Navigator, Screen } = createBottomTabNavigator();
-
 
 export function AppRoutes (){
+    const { Navigator, Screen } = createBottomTabNavigator();
+
     const theme = useTheme();
 
     return (

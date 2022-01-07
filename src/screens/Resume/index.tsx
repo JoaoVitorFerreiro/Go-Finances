@@ -1,4 +1,5 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, {useCallback, useState} from "react";
+
 import { HistoryCard } from "../../components/HistoryCard";
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { VictoryPie } from "victory-native";
@@ -26,6 +27,7 @@ import { categories } from "../../utils/categories";
 import { RFValue } from "react-native-responsive-fontsize";
 import { ActivityIndicator } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
+import { useAuth } from "../../hooks/auth";
 
 interface TransactionData {
     type: 'positive' | 'negative';
@@ -33,7 +35,6 @@ interface TransactionData {
     amount: string;
     category: string;
     date: string;
-
 }
 
 interface CategoryData {
@@ -46,14 +47,14 @@ interface CategoryData {
 }
 
 export function Resume(){
-    const [isLoading, setIsLoading] = useState(true);
+    const { user } = useAuth();
+    const [isLoading, setIsLoading] = useState(false);
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [totalByCategories, setTotalByCategories] = useState<CategoryData[]>([]);
     
     const theme = useTheme();
 
     function handleChanceDate(action: 'next' | 'prev'){
-     
         if(action === 'next'){
             setSelectedDate(addMonths(selectedDate, 1));
         } else {
@@ -62,8 +63,7 @@ export function Resume(){
     }
 
     async function LoadData() {
-        setIsLoading(true);
-        const dataKey = '@gofinances:transactions';
+        const dataKey = `@gofinances:transactions_user${user.id}`;
         const response = await AsyncStorage.getItem(dataKey);
         const responseFormatted = response ? JSON.parse(response) : [];
 

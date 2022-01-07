@@ -74,8 +74,8 @@ export const IconButton = styled(RectButton)`
 `;
 
 export const IconClose = styled(Feather)`
-    font-size: ${RFValue(16)}px;
-    color: ${({ theme }) => theme.colors.text};
+    font-size: ${RFValue(17)}px;
+    color: ${({ theme }) => theme.colors.attention_light};
     border-radius: 10px;
 `;
 

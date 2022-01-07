@@ -1,8 +1,6 @@
 import React from "react";
 import { RectButtonProps } from "react-native-gesture-handler";
 
-import { Feather } from '@expo/vector-icons'
-
 import { 
     Container,
     Icon,
